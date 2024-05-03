@@ -1,113 +1,245 @@
-import Image from "next/image";
+"use client"
+import { leftArrow, rightArrow } from '@/public'
+import Image from 'next/image'
+import React, { useState } from 'react'
 
-export default function Home() {
+const Home = () => {
+
+  const days = [
+    { day: "Wed", date: "8" },
+    { day: "Thu", date: "9" },
+    { day: "Fri", date: "10" },
+    { day: "Sat", date: "11" },
+    { day: "Sun", date: "12" }]
+
+  const timings = [
+    { timing: "Morning", period: "9am -12pm" },
+    { timing: "Afternoon", period: "12pm-4pm" },
+    { timing: "Evening", period: "4pm-7pm" },
+    { timing: "Night", period: "7pm-10pm" },
+  ]
+  const [selectedDate, setSelectedDate] = useState(0)
+
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main className="py-6 ">
+      <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
+        <div className='w-full flex flex-col lg:flex-row space-y-5 justify-between'>
+          <div className='w-full lg:w-3/12 flex flex-col space-y-3 rounded-md shadow-lg px-3'>
+            <div>
+              <Image
+                src="https://images.unsplash.com/flagged/photo-1571366992968-15b65708ee76?auto=format&q=75&fit=crop&w=250" alt=""
+                width={200}
+                height={200}
+                className="h-[200px] w-full object-cover "
+              />
+            </div>
+            <div className='flex flex-col lg:flex-row items-center space-x-2'>
+              <div>
+                <a href='' className='underline bg-[#F3F5F7] py-2 px-4 rounded-full' >Bangalore .HSR Layout</a>
+              </div>
+              <div>
+                <p className='bg-[#F3F5F7] py-2 px-4 rounded-full' >$7000/mo</p>
+              </div>
+            </div>
+            <div className='bg-[#F3F5F7] py-2 px-2 rounded-2xl  space-x-2'>
+              <div className='mb-2'>
+                <p className='font-bold'>Amenities</p>
+              </div>
+              <div className='flex gap-3 flex-wrap max-w-[300px]'>
+                {
+                  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(() => {
+                    return (
+                      <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="45.2108" height="45.2108" rx="12.432" fill="white" />
+                        <g clip-path="url(#clip0_1_81)">
+                          <path d="M30.1576 6.4584H14.8015C14.0082 6.4584 13.3651 7.10153 13.3651 7.89487V35.7987C13.3651 36.5921 14.0082 37.2352 14.8015 37.2352H30.1576C30.9509 37.2352 31.594 36.5921 31.594 35.7987V7.89487C31.594 7.10153 30.9509 6.4584 30.1576 6.4584Z" fill="white" />
+                          <path d="M30.1622 37.4821H14.8062C13.8796 37.4821 13.1229 36.7295 13.1229 35.7988V7.89902C13.1229 6.96836 13.8755 6.21573 14.8062 6.21573H30.1622C31.0888 6.21573 31.8455 6.96836 31.8455 7.89902V35.7988C31.8455 36.7254 31.0929 37.4821 30.1622 37.4821ZM14.8062 6.70534C14.1466 6.70534 13.6125 7.23946 13.6125 7.89902V35.7988C13.6125 36.4584 14.1466 36.9925 14.8062 36.9925H30.1622C30.8218 36.9925 31.3559 36.4584 31.3559 35.7988V7.89902C31.3559 7.23946 30.8218 6.70534 30.1622 6.70534H14.8062Z" fill="#414042" />
+                          <path d="M31.594 17.8495H13.3651V18.8368H31.594V17.8495Z" fill="white" />
+                          <path d="M31.8414 19.0838H13.1229V17.6068H31.8414V19.0838ZM13.6125 18.5942H31.3518V18.0965H13.6125V18.5942Z" fill="#414042" />
+                          <path d="M29.3328 22.3817C29.3328 20.9452 28.7623 20.3949 28.7623 20.3949H28.7259C28.7259 20.3949 28.1553 20.9452 28.1553 22.3817C28.1553 23.5349 28.7218 27.3587 28.7461 27.2333C28.7663 27.3587 28.7785 27.4275 28.7785 27.4275C28.7785 27.4275 29.3328 23.5349 29.3328 22.3817Z" fill="white" />
+                          <path d="M28.7742 27.6742C28.6568 27.6742 28.5516 27.5892 28.5314 27.4719C28.5314 27.4719 28.5192 27.4112 28.5031 27.3019C28.4828 27.2493 28.4747 27.1846 28.4626 27.1199C28.4424 27.0147 28.4181 26.8609 28.3898 26.6788C28.3291 26.2782 28.2522 25.7643 28.1874 25.2707C28.0822 24.4776 27.9042 23.0492 27.9042 22.3856C27.9042 20.8601 28.5233 20.2451 28.5516 20.2208C28.5961 20.1763 28.6568 20.152 28.7216 20.152H28.758C28.8227 20.152 28.8834 20.1763 28.9279 20.2208C28.9563 20.2451 29.5753 20.8601 29.5753 22.3856C29.5753 23.5429 29.0412 27.31 29.0169 27.4679C29.0008 27.5852 28.8996 27.6742 28.7782 27.6783L28.7742 27.6742ZM28.7418 20.7913C28.7135 20.8439 28.6811 20.9087 28.6487 20.9815C28.5354 21.2445 28.3978 21.7058 28.3978 22.3856C28.3978 23.0654 28.5921 24.6111 28.7539 25.7643C28.9077 24.5625 29.0898 23.0249 29.0898 22.3856C29.0898 21.5601 28.8915 21.0543 28.7458 20.7954L28.7418 20.7913Z" fill="#414042" />
+                          <path d="M29.3318 11.6341C29.3318 10.6711 28.7612 10.2988 28.7612 10.2988H28.7248C28.7248 10.2988 28.1543 10.6671 28.1543 11.6341C28.1543 12.407 28.7208 14.9724 28.7451 14.8874C28.7653 14.9724 28.7774 15.0169 28.7774 15.0169C28.7774 15.0169 29.3318 12.403 29.3318 11.6301V11.6341Z" fill="white" />
+                          <path d="M28.7729 15.2681C28.6596 15.2681 28.5625 15.1912 28.5342 15.086C28.5342 15.086 28.5261 15.0496 28.5099 14.9848C28.4897 14.9403 28.4775 14.8918 28.4654 14.8473C28.4452 14.7744 28.4209 14.6692 28.3926 14.5438C28.3319 14.2727 28.255 13.9287 28.1902 13.5969C28.085 13.0588 27.907 12.0917 27.907 11.6385C27.907 10.5541 28.5625 10.1171 28.5908 10.1009C28.6313 10.0766 28.6758 10.0604 28.7244 10.0604H28.7608C28.8093 10.0604 28.8539 10.0725 28.8943 10.1009C28.9226 10.1171 29.5782 10.5541 29.5782 11.6385C29.5782 12.4275 29.04 14.9687 29.0157 15.0739C28.9914 15.1831 28.8943 15.264 28.781 15.2681C28.781 15.2681 28.781 15.2681 28.777 15.2681H28.7729ZM28.7406 10.6148C28.603 10.7645 28.3966 11.0841 28.3966 11.6385C28.3966 12.0674 28.5908 13.1195 28.7527 13.8923C28.9065 13.0871 29.0885 12.0634 29.0885 11.6385C29.0885 11.0882 28.8822 10.7685 28.7446 10.6148H28.7406Z" fill="#414042" />
+                          <path d="M21.4817 13.9127L18.7481 13.8145L18.6478 16.6047L21.3814 16.7029L21.4817 13.9127Z" fill="#434343" />
+                          <path d="M24.9348 9.07788L22.2012 8.97963L22.1009 11.7698L24.8345 11.8681L24.9348 9.07788Z" fill="#434343" />
+                          <path d="M16.8456 13.8766L15.4172 10.9228L18.3184 9.51868L19.7468 12.4725L16.8456 13.8766ZM16.0687 11.1534L17.0722 13.2252L19.0953 12.2459L18.0918 10.1742L16.0687 11.1534Z" fill="#414042" />
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_1_81">
+                            <rect width="18.7186" height="31.2664" fill="white" transform="translate(13.1219 6.21671)" />
+                          </clipPath>
+                        </defs>
+                      </svg>
+                    )
+                  })
+                }
+              </div>
+            </div>
+            <div className='flex items-center bg-[#F3F5F7] py-2 px-2 rounded-2xl  space-x-2'>
+              <div className='mb-2'>
+                <p className='font-bold'>Features</p>
+              </div>
+              <div className='flex gap-3 flex-wrap max-w-[300px]'>
+                {
+                  [1, 2, 3, 4,].map(() => {
+                    return (
+                      <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="45.2108" height="45.2108" rx="12.432" fill="white" />
+                        <g clip-path="url(#clip0_1_81)">
+                          <path d="M30.1576 6.4584H14.8015C14.0082 6.4584 13.3651 7.10153 13.3651 7.89487V35.7987C13.3651 36.5921 14.0082 37.2352 14.8015 37.2352H30.1576C30.9509 37.2352 31.594 36.5921 31.594 35.7987V7.89487C31.594 7.10153 30.9509 6.4584 30.1576 6.4584Z" fill="white" />
+                          <path d="M30.1622 37.4821H14.8062C13.8796 37.4821 13.1229 36.7295 13.1229 35.7988V7.89902C13.1229 6.96836 13.8755 6.21573 14.8062 6.21573H30.1622C31.0888 6.21573 31.8455 6.96836 31.8455 7.89902V35.7988C31.8455 36.7254 31.0929 37.4821 30.1622 37.4821ZM14.8062 6.70534C14.1466 6.70534 13.6125 7.23946 13.6125 7.89902V35.7988C13.6125 36.4584 14.1466 36.9925 14.8062 36.9925H30.1622C30.8218 36.9925 31.3559 36.4584 31.3559 35.7988V7.89902C31.3559 7.23946 30.8218 6.70534 30.1622 6.70534H14.8062Z" fill="#414042" />
+                          <path d="M31.594 17.8495H13.3651V18.8368H31.594V17.8495Z" fill="white" />
+                          <path d="M31.8414 19.0838H13.1229V17.6068H31.8414V19.0838ZM13.6125 18.5942H31.3518V18.0965H13.6125V18.5942Z" fill="#414042" />
+                          <path d="M29.3328 22.3817C29.3328 20.9452 28.7623 20.3949 28.7623 20.3949H28.7259C28.7259 20.3949 28.1553 20.9452 28.1553 22.3817C28.1553 23.5349 28.7218 27.3587 28.7461 27.2333C28.7663 27.3587 28.7785 27.4275 28.7785 27.4275C28.7785 27.4275 29.3328 23.5349 29.3328 22.3817Z" fill="white" />
+                          <path d="M28.7742 27.6742C28.6568 27.6742 28.5516 27.5892 28.5314 27.4719C28.5314 27.4719 28.5192 27.4112 28.5031 27.3019C28.4828 27.2493 28.4747 27.1846 28.4626 27.1199C28.4424 27.0147 28.4181 26.8609 28.3898 26.6788C28.3291 26.2782 28.2522 25.7643 28.1874 25.2707C28.0822 24.4776 27.9042 23.0492 27.9042 22.3856C27.9042 20.8601 28.5233 20.2451 28.5516 20.2208C28.5961 20.1763 28.6568 20.152 28.7216 20.152H28.758C28.8227 20.152 28.8834 20.1763 28.9279 20.2208C28.9563 20.2451 29.5753 20.8601 29.5753 22.3856C29.5753 23.5429 29.0412 27.31 29.0169 27.4679C29.0008 27.5852 28.8996 27.6742 28.7782 27.6783L28.7742 27.6742ZM28.7418 20.7913C28.7135 20.8439 28.6811 20.9087 28.6487 20.9815C28.5354 21.2445 28.3978 21.7058 28.3978 22.3856C28.3978 23.0654 28.5921 24.6111 28.7539 25.7643C28.9077 24.5625 29.0898 23.0249 29.0898 22.3856C29.0898 21.5601 28.8915 21.0543 28.7458 20.7954L28.7418 20.7913Z" fill="#414042" />
+                          <path d="M29.3318 11.6341C29.3318 10.6711 28.7612 10.2988 28.7612 10.2988H28.7248C28.7248 10.2988 28.1543 10.6671 28.1543 11.6341C28.1543 12.407 28.7208 14.9724 28.7451 14.8874C28.7653 14.9724 28.7774 15.0169 28.7774 15.0169C28.7774 15.0169 29.3318 12.403 29.3318 11.6301V11.6341Z" fill="white" />
+                          <path d="M28.7729 15.2681C28.6596 15.2681 28.5625 15.1912 28.5342 15.086C28.5342 15.086 28.5261 15.0496 28.5099 14.9848C28.4897 14.9403 28.4775 14.8918 28.4654 14.8473C28.4452 14.7744 28.4209 14.6692 28.3926 14.5438C28.3319 14.2727 28.255 13.9287 28.1902 13.5969C28.085 13.0588 27.907 12.0917 27.907 11.6385C27.907 10.5541 28.5625 10.1171 28.5908 10.1009C28.6313 10.0766 28.6758 10.0604 28.7244 10.0604H28.7608C28.8093 10.0604 28.8539 10.0725 28.8943 10.1009C28.9226 10.1171 29.5782 10.5541 29.5782 11.6385C29.5782 12.4275 29.04 14.9687 29.0157 15.0739C28.9914 15.1831 28.8943 15.264 28.781 15.2681C28.781 15.2681 28.781 15.2681 28.777 15.2681H28.7729ZM28.7406 10.6148C28.603 10.7645 28.3966 11.0841 28.3966 11.6385C28.3966 12.0674 28.5908 13.1195 28.7527 13.8923C28.9065 13.0871 29.0885 12.0634 29.0885 11.6385C29.0885 11.0882 28.8822 10.7685 28.7446 10.6148H28.7406Z" fill="#414042" />
+                          <path d="M21.4817 13.9127L18.7481 13.8145L18.6478 16.6047L21.3814 16.7029L21.4817 13.9127Z" fill="#434343" />
+                          <path d="M24.9348 9.07788L22.2012 8.97963L22.1009 11.7698L24.8345 11.8681L24.9348 9.07788Z" fill="#434343" />
+                          <path d="M16.8456 13.8766L15.4172 10.9228L18.3184 9.51868L19.7468 12.4725L16.8456 13.8766ZM16.0687 11.1534L17.0722 13.2252L19.0953 12.2459L18.0918 10.1742L16.0687 11.1534Z" fill="#414042" />
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_1_81">
+                            <rect width="18.7186" height="31.2664" fill="white" transform="translate(13.1219 6.21671)" />
+                          </clipPath>
+                        </defs>
+                      </svg>
+                    )
+                  })
+                }
+              </div>
+            </div>
+            <div className='flex items-center bg-[#F3F5F7] py-2 px-2 rounded-2xl  space-x-2'>
+              <div className='mb-2'>
+                <p className='font-bold'>Connectivity</p>
+              </div>
+              <div className='flex gap-3 flex-wrap max-w-[300px]'>
+                {
+                  [1, 2, 3,].map(() => {
+                    return (
+                      <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="45.2108" height="45.2108" rx="12.432" fill="white" />
+                        <g clip-path="url(#clip0_1_81)">
+                          <path d="M30.1576 6.4584H14.8015C14.0082 6.4584 13.3651 7.10153 13.3651 7.89487V35.7987C13.3651 36.5921 14.0082 37.2352 14.8015 37.2352H30.1576C30.9509 37.2352 31.594 36.5921 31.594 35.7987V7.89487C31.594 7.10153 30.9509 6.4584 30.1576 6.4584Z" fill="white" />
+                          <path d="M30.1622 37.4821H14.8062C13.8796 37.4821 13.1229 36.7295 13.1229 35.7988V7.89902C13.1229 6.96836 13.8755 6.21573 14.8062 6.21573H30.1622C31.0888 6.21573 31.8455 6.96836 31.8455 7.89902V35.7988C31.8455 36.7254 31.0929 37.4821 30.1622 37.4821ZM14.8062 6.70534C14.1466 6.70534 13.6125 7.23946 13.6125 7.89902V35.7988C13.6125 36.4584 14.1466 36.9925 14.8062 36.9925H30.1622C30.8218 36.9925 31.3559 36.4584 31.3559 35.7988V7.89902C31.3559 7.23946 30.8218 6.70534 30.1622 6.70534H14.8062Z" fill="#414042" />
+                          <path d="M31.594 17.8495H13.3651V18.8368H31.594V17.8495Z" fill="white" />
+                          <path d="M31.8414 19.0838H13.1229V17.6068H31.8414V19.0838ZM13.6125 18.5942H31.3518V18.0965H13.6125V18.5942Z" fill="#414042" />
+                          <path d="M29.3328 22.3817C29.3328 20.9452 28.7623 20.3949 28.7623 20.3949H28.7259C28.7259 20.3949 28.1553 20.9452 28.1553 22.3817C28.1553 23.5349 28.7218 27.3587 28.7461 27.2333C28.7663 27.3587 28.7785 27.4275 28.7785 27.4275C28.7785 27.4275 29.3328 23.5349 29.3328 22.3817Z" fill="white" />
+                          <path d="M28.7742 27.6742C28.6568 27.6742 28.5516 27.5892 28.5314 27.4719C28.5314 27.4719 28.5192 27.4112 28.5031 27.3019C28.4828 27.2493 28.4747 27.1846 28.4626 27.1199C28.4424 27.0147 28.4181 26.8609 28.3898 26.6788C28.3291 26.2782 28.2522 25.7643 28.1874 25.2707C28.0822 24.4776 27.9042 23.0492 27.9042 22.3856C27.9042 20.8601 28.5233 20.2451 28.5516 20.2208C28.5961 20.1763 28.6568 20.152 28.7216 20.152H28.758C28.8227 20.152 28.8834 20.1763 28.9279 20.2208C28.9563 20.2451 29.5753 20.8601 29.5753 22.3856C29.5753 23.5429 29.0412 27.31 29.0169 27.4679C29.0008 27.5852 28.8996 27.6742 28.7782 27.6783L28.7742 27.6742ZM28.7418 20.7913C28.7135 20.8439 28.6811 20.9087 28.6487 20.9815C28.5354 21.2445 28.3978 21.7058 28.3978 22.3856C28.3978 23.0654 28.5921 24.6111 28.7539 25.7643C28.9077 24.5625 29.0898 23.0249 29.0898 22.3856C29.0898 21.5601 28.8915 21.0543 28.7458 20.7954L28.7418 20.7913Z" fill="#414042" />
+                          <path d="M29.3318 11.6341C29.3318 10.6711 28.7612 10.2988 28.7612 10.2988H28.7248C28.7248 10.2988 28.1543 10.6671 28.1543 11.6341C28.1543 12.407 28.7208 14.9724 28.7451 14.8874C28.7653 14.9724 28.7774 15.0169 28.7774 15.0169C28.7774 15.0169 29.3318 12.403 29.3318 11.6301V11.6341Z" fill="white" />
+                          <path d="M28.7729 15.2681C28.6596 15.2681 28.5625 15.1912 28.5342 15.086C28.5342 15.086 28.5261 15.0496 28.5099 14.9848C28.4897 14.9403 28.4775 14.8918 28.4654 14.8473C28.4452 14.7744 28.4209 14.6692 28.3926 14.5438C28.3319 14.2727 28.255 13.9287 28.1902 13.5969C28.085 13.0588 27.907 12.0917 27.907 11.6385C27.907 10.5541 28.5625 10.1171 28.5908 10.1009C28.6313 10.0766 28.6758 10.0604 28.7244 10.0604H28.7608C28.8093 10.0604 28.8539 10.0725 28.8943 10.1009C28.9226 10.1171 29.5782 10.5541 29.5782 11.6385C29.5782 12.4275 29.04 14.9687 29.0157 15.0739C28.9914 15.1831 28.8943 15.264 28.781 15.2681C28.781 15.2681 28.781 15.2681 28.777 15.2681H28.7729ZM28.7406 10.6148C28.603 10.7645 28.3966 11.0841 28.3966 11.6385C28.3966 12.0674 28.5908 13.1195 28.7527 13.8923C28.9065 13.0871 29.0885 12.0634 29.0885 11.6385C29.0885 11.0882 28.8822 10.7685 28.7446 10.6148H28.7406Z" fill="#414042" />
+                          <path d="M21.4817 13.9127L18.7481 13.8145L18.6478 16.6047L21.3814 16.7029L21.4817 13.9127Z" fill="#434343" />
+                          <path d="M24.9348 9.07788L22.2012 8.97963L22.1009 11.7698L24.8345 11.8681L24.9348 9.07788Z" fill="#434343" />
+                          <path d="M16.8456 13.8766L15.4172 10.9228L18.3184 9.51868L19.7468 12.4725L16.8456 13.8766ZM16.0687 11.1534L17.0722 13.2252L19.0953 12.2459L18.0918 10.1742L16.0687 11.1534Z" fill="#414042" />
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_1_81">
+                            <rect width="18.7186" height="31.2664" fill="white" transform="translate(13.1219 6.21671)" />
+                          </clipPath>
+                        </defs>
+                      </svg>
+                    )
+                  })
+                }
+              </div>
+            </div>
+          </div>
+          <div className='w-full lg:w-6/12 flex flex-col space-y-3 me-40'>
+            <div>
+              <h2 className='text-2xl font-semibold'>Schedule visiting data & time </h2>
+            </div>
+            <div className=' px-2 rounded-md bg-[#F3F5F7]'>
+              <div className='flex gap-2 py-2 border-b border-slate-400 my-2'>
+                <p className=' text-lg font-semibold' >June 2023</p>
+                <Image src={leftArrow} />
+                <Image src={rightArrow} />
+              </div>
+              <div className='w-full flex flex-col md:flex-row gap-2 items-center justify-center gap-x-2'>
+                {
+                  days.map((day, i) => {
+                    return (
+                      <div key={i} className='bg-slate-300 items-center px-10 py-1 justify-center w-full rounded-md'>
+                        <p className='flex items-center justify-center border-b border-slate-400'>
+                          {day.day}
+                        </p>
+                        <p className='flex justify-center items-center'>{day.date}</p>
+                      </div>
+                    )
+                  })
+                }
+
+              </div>
+              <div className='w-full my-3 flex flex-col md:flex-row gap-2 items-center justify-center gap-x-2'>
+                {
+                  timings.map((day, i) => {
+                    return (
+                      <div key={i} className='bg-slate-300 items-center  py-1 justify-center w-full rounded-md'>
+                        <p className='border-b flex items-center justify-center border-slate-400'>
+                          {day.timing}
+                        </p>
+                        <p className='flex items-center justify-center'>{day.period}</p>
+                      </div>
+                    )
+                  })
+                }
+              </div>
+            </div>
+            <p className='font-semibold text-xl'> Visitor Info</p>
+            <div className='w-full flex flex-col py-2 px-2 items-center space-x-2 bg-[#F3F5F7]'>
+
+              <label
+                htmlFor="UserEmail"
+                className="w-full mb-3 relative block overflow-hidden border-b border-gray-200 text-lg bg-transparent pt-3 focus-within:border-blue-600"
+              >
+                <input
+                  type="email"
+                  id="UserEmail"
+                  placeholder="Email"
+                  value="Nirvana J"
+                  className="peer text-base h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
+                />
+
+                <span
+                  className="absolute start-0 top-2 -translate-y-1/2 text-sm text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs"
+                >
+                  Email
+                </span>
+              </label>
+              <label
+                htmlFor="phoneNumber"
+                className="w-full relative block overflow-hidden border-b border-gray-200 text-lg bg-transparent pt-3 focus-within:border-blue-600"
+              >
+                <input
+                  type="text"
+                  id="phoneNumber"
+                  placeholder="Phone Number"
+                  value="99999-99999"
+                  className="peer text-base h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
+                />
+                <span
+                  className="absolute start-0 top-2 -translate-y-1/2 text-sm text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs"
+                >
+                  Phone Number
+                </span>
+              </label>
+            </div>
+            <div className=' py-2 px-2 rounded-2xl space-x-2'>
+              <div className='w-full flex justify-between items-center justify-center'>
+                <div className='flex flex-col md:flex-row '>
+                  <p className='underline bg-[#F3F5F7] py-2 px-4 rounded-full' > 02/06/2023 </p>
+                  <p className='bg-[#F3F5F7] py-2 px-4 rounded-full' >Evening </p>
+                </div>
+                <div>
+                  <button className='bg-[#F45C2C] px-3 py-2 rounded-full text-white'> Schedule a visit</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
     </main>
-  );
+  )
 }
+
+export default Home
